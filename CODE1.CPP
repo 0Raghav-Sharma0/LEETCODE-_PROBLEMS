@@ -2,7 +2,7 @@ class Solution {
 public:
 
     void update(int number, vector<int>& vec, int val) {
-        for(int i = 0; i < 32; i++) { //O(32)
+        for(int i = 0; i < 32; i++) {
             if((number >> i) & 1) {
                 vec[i] += val;
             }
@@ -12,8 +12,8 @@ public:
     int getDecimalFromBinary(vector<int>& vec) {
         int num = 0;
 
-        for(int i = 0; i < 32; i++) { //O(32)
-            if(vec[i] > 0) { //ith position me 1 hai
+        for(int i = 0; i < 32; i++) { 
+            if(vec[i] > 0) {
                 num |= (1 << i);
             }
         }
@@ -30,15 +30,13 @@ public:
         int j = 0;
 
         vector<int> vec(32, 0);
-        //vec[i] = total number of set bits in ith position
-
-        //T.C : O(2*n)
-        while(j < n) { //O(n)
-            update(nums[j], vec, 1); //adding in the current window
+       
+        while(j < n) { 
+            update(nums[j], vec, 1); 
 
             while(i <= j && getDecimalFromBinary(vec) >= k) {
                 result = min(result, j-i+1);
-                update(nums[i], vec, -1); //remove the nums[i] from the window
+                update(nums[i], vec, -1); 
                 i++;
             }
 
@@ -48,5 +46,3 @@ public:
         return result == INT_MAX ? -1 : result;
     }
 };
-/*SO basically we made a winndow amd then we check that weather the 
-or operations coumulatively whhen combined give the answer less than or equal to k */

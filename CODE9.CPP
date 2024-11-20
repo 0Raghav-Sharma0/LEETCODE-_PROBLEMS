@@ -4,7 +4,7 @@ public:
         int n = code.size();
 
         vector<int> result(n, 0);
-        if (k == 0) {
+        if (k ==
             return result;
         }
 
